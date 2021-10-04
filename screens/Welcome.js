@@ -89,7 +89,7 @@ const Square = ({ scrollX }) => {
         }}
     />
 }
-const Welcome = () => {
+const Welcome = ({navigation}) => {
     const scrollX = React.useRef(new Animated.Value(0)).current
     return (
         // <View style={styles.container}>
@@ -148,7 +148,7 @@ const Welcome = () => {
                                     {item.description}
                                 </Text>
                             </View>
-                            <Button style={{backgroundColor:'rgba(255,255,255,.5)', bottom:50}}>
+                            <Button style={{backgroundColor:'rgba(255,255,255,.5)', bottom:50}} onPress={()=>navigation.navigate('Login')}>
                             <Text style={{color:'black', fontWeight:'bold'}}>Get started!</Text>
                             </Button>
                             <Indicator scrollX={scrollX} />
