@@ -1,17 +1,18 @@
 //import liraries
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Dimensions } from 'react-native';
-import Animated, { interpolate } from 'react-native-reanimated';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import Animated, { interpolateNode } from 'react-native-reanimated';
 
 const { width } = Dimensions.get('window');
-const ButtonContainer = ({arrowOpacityAnimation}) => {
+const ButtonContainer = ({ arrowOpacityAnimation, cb }) => {
 
-  const loginOpacity = interpolate(arrowOpacityAnimation, {
+  const loginOpacity = interpolateNode(arrowOpacityAnimation, {
     inputRange: [0, 1],
     outputRange: [1, 0]
   })
 
-  const signUpOpacity = interpolate(arrowOpacityAnimation, {
+  const signUpOpacity = interpolateNode(arrowOpacityAnimation, {
     inputRange: [0, 1],
     outputRange: [0, 1]
   })
@@ -31,13 +32,15 @@ const ButtonContainer = ({arrowOpacityAnimation}) => {
           
         }}
       >
-        <Text style={{ color: '#fff', fontSize: 20, fontWeight: 'bold' }}>
-          LOGIN
-        </Text>
+        <TouchableOpacity 
+        style={{ color: '#fff', fontSize: 20, fontWeight: 'bold' }}
+        onPress={(e)=> cb(e)}>
+          <Text>LOGIN</Text>
+        </TouchableOpacity>
       </Animated.View>
 
       <Animated.View
-        style={{         
+        style={{
           justifyContent: 'center',
           alignItems: 'center',
           opacity: signUpOpacity,
@@ -46,12 +49,12 @@ const ButtonContainer = ({arrowOpacityAnimation}) => {
           backgroundColor: '#6070FF',
           elevation: 5,
           borderRadius: 40,
-          position:'absolute',        
+          position: 'absolute',
         }}
       >
-        <Text style={{ color: '#fff', fontSize: 20, fontWeight: 'bold' }}>
-          SIGNUP
-        </Text>
+        <TouchableOpacity style={{ color: '#fff', fontSize: 20, fontWeight: 'bold' }}>
+          <Text>SIGNUP</Text>
+        </TouchableOpacity>
       </Animated.View>
     </View>
   );
@@ -64,7 +67,7 @@ const styles = StyleSheet.create({
     height: 50,
     width,
     justifyContent: 'flex-start',
-    alignItems: 'center',    
+    alignItems: 'center',
   },
 });
 

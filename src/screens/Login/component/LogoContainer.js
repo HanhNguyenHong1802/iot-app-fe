@@ -1,18 +1,18 @@
 //import liraries
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
-import Animated, { interpolate } from 'react-native-reanimated';
+import Animated, { interpolateNode } from 'react-native-reanimated';
 import Svg, { Line } from 'react-native-svg';
 
 // create a component
-const LogoContainer = ({arrowOpacityAnimation}) => {
+const LogoContainer = ({ arrowOpacityAnimation }) => {
 
-  const opacity = interpolate(arrowOpacityAnimation, {
+  const opacity = interpolateNode(arrowOpacityAnimation, {
     inputRange: [0, 1],
     outputRange: [0, 1],
   });
 
-  const translateY = interpolate(arrowOpacityAnimation, {
+  const translateY = interpolateNode(arrowOpacityAnimation, {
     inputRange: [0, 1],
     outputRange: [0, 110],
   });
@@ -27,8 +27,8 @@ const LogoContainer = ({arrowOpacityAnimation}) => {
         marginTop: 60,
         justifyContent: 'space-evenly',
         alignItems: 'center',
-        position: 'absolute', 
-        transform: [{translateY}],      
+        position: 'absolute',
+        transform: [{ translateY }],
         opacity,
       }}
     >
@@ -69,13 +69,13 @@ const LogoContainer = ({arrowOpacityAnimation}) => {
             width: 35,
             height: 35,
             borderRadius: 15,
-            justifyContent:'center',
-            alignItems:'center',
-            elevation:3
+            justifyContent: 'center',
+            alignItems: 'center',
+            elevation: 3
           }}
         >
           <Image
-            source={require('../../../assets/images/google.png')}
+            source={require('../../../../assets/images/google.png')}
             style={{ width: 30, height: 30 }}
           />
         </View>
@@ -85,13 +85,13 @@ const LogoContainer = ({arrowOpacityAnimation}) => {
             width: 35,
             height: 35,
             borderRadius: 15,
-            justifyContent:'center',
-            alignItems:'center',
-            elevation:3
+            justifyContent: 'center',
+            alignItems: 'center',
+            elevation: 3
           }}
         >
           <Image
-            source={require('../../../assets/images/facebook.png')}
+            source={require('../../../../assets/images/facebook.png')}
             style={{ width: 30, height: 30 }}
           />
         </View>
@@ -101,13 +101,13 @@ const LogoContainer = ({arrowOpacityAnimation}) => {
             width: 35,
             height: 35,
             borderRadius: 15,
-            justifyContent:'center',
-            alignItems:'center',
-            elevation:3
+            justifyContent: 'center',
+            alignItems: 'center',
+            elevation: 3
           }}
         >
           <Image
-            source={require('../../../assets/images/tweeter.png')}
+            source={require('../../../../assets/images/tweeter.png')}
             style={{ width: 30, height: 30, borderRadius: 15 }}
           />
         </View>

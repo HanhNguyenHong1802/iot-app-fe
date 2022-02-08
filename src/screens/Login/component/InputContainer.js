@@ -1,21 +1,20 @@
 //import liraries
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { View, Text, StyleSheet, TextInput } from 'react-native';
 import { Feather } from '@expo/vector-icons';
-import Animated, { interpolate } from 'react-native-reanimated';
+import Animated, { interpolateNode } from 'react-native-reanimated';
 // create a component
-const InputContainer = ({arrowOpacityAnimation}) => {
+const InputContainer = ({ arrowOpacityAnimation, cbUsername, cbPass }) => {
 
-  const confirmPasswordY = interpolate(arrowOpacityAnimation, {
+  const confirmPasswordY = interpolateNode(arrowOpacityAnimation, {
     inputRange: [0, 1],
     outputRange: [-50, 0]
   })
 
-  const viewY = interpolate(arrowOpacityAnimation, {
+  const viewY = interpolateNode(arrowOpacityAnimation, {
     inputRange: [0, 1],
     outputRange: [0, -50]
   })
-
 
   return (
     <Animated.View style={[styles.container, { transform: [{ translateY: viewY }] }]}>
@@ -29,8 +28,11 @@ const InputContainer = ({arrowOpacityAnimation}) => {
           paddingHorizontal: 20,
         }}
       >
-        <Feather name="mail" color="black" size={25} />
-        <TextInput placeholder="Email" style={{ marginLeft: 5 }} />
+        <Feather name="user" color="black" size={25} />
+        <TextInput
+          placeholder="Username"
+          style={{ marginLeft: 5, paddingRight:20 }}
+          onChangeText={(e) => cbUsername(e)} />
       </View>
 
       <View
@@ -46,7 +48,13 @@ const InputContainer = ({arrowOpacityAnimation}) => {
       >
         <View style={{ flexDirection: 'row' }}>
           <Feather name="lock" color="black" size={25} />
-          <TextInput placeholder="Password" style={{ marginLeft: 5 }} />
+          <TextInput
+            placeholder="Password"
+            style={{ marginLeft: 5, paddingRight:100 }}
+            textContentType='password'
+            onChangeText={(e) => cbPass(e)}
+
+          />
         </View>
 
         <Feather name="eye" color="black" size={20} />

@@ -2,8 +2,8 @@ import { StatusBar } from "expo-status-bar"
 import React from "react"
 import { Animated, Dimensions, Image, StyleSheet, View } from "react-native"
 import { Button, Text } from "react-native-paper"
-import { styles } from "../globalStyles"
-import { bgs, DATA } from "./welcomeData"
+import { styles } from "../../../globalStyles"
+import { bgs, DATA } from "./components/welcomeData"
 const { width, height } = Dimensions.get('screen')
 const Indicator = ({ scrollX }) => {
 
