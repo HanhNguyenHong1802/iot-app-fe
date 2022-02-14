@@ -3,6 +3,7 @@ import login from '../../../api/authen/login';
 import signup from '../../../api/authen/signup';
 import { loginSuccess, signupSuccess, TYPES } from '../actions/authenActions';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { logoutUser } from '../../../api/authen/logout';
 
 function* loginSaga(action) {
   try {
@@ -30,7 +31,17 @@ function* signupSaga(action) {
   }
 }
 
+function* logoutSaga() {
+  try {
+    const response = yield call(logoutUser)
+    yield AsyncStorage.removeItem('@currentuser')
+    yield AsyncStorage.removeItem('@userid')
+  } catch (error) {
+
+  }
+}
 export default [
   takeLatest(TYPES.LOGIN_REQUEST, loginSaga),
-  takeLatest(TYPES.REGISTER_REQUEST, signupSaga)
+  takeLatest(TYPES.REGISTER_REQUEST, signupSaga),
+  takeLatest(TYPES.LOGOUT_REQUEST, logoutSaga)
 ];

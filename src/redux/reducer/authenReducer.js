@@ -19,6 +19,12 @@ export default function authReducer(state = initState, action) {
       return {
         ...state, token : action.response.token, user:action.response.user
       }
+    
+    case TYPES.LOGOUT_SUCCESS:
+      return {
+        ...state
+      }
+
     default: 
     return state
   }

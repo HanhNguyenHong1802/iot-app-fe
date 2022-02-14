@@ -9,7 +9,12 @@ export default function deviceReducer(state = initState, action) {
       return {
         ...state, state: action.response
       }
-    default: 
-    return state
+
+    case TYPES.DETAIL_DEVICE_SUCCESS:
+      return {
+        ...state, state: action.response
+      }
+    default:
+      return state
   }
 }

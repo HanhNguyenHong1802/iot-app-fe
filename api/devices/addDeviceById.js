@@ -9,7 +9,7 @@ async function getCookie(name = '@userid') {
 }
 
 async function getCookieUser(name = '@currentuser') {
-  current = await AsyncStorage.getItem(name)
+  currentCookie = await AsyncStorage.getItem(name)
 }
 
 export default async function addDeviceByIdFetch(params = {}) {

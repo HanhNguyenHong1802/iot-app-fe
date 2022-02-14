@@ -99,13 +99,13 @@ export async function postAsyncWithToken(url, param) {
     if (current !== null) {
       const response = await Axios.post(url, {
         headers: {
-          'Authorization': 'Bearer ' + current && current,
+          'Authorization': `Bearer ${current}`,
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'Cache-Control': 'no-cache'
-        },
-        params: param
-      })
+          'Cache-Control': 'no-cache'}}
+        ,{
+        params: param}
+      )
 
       return response;
     }

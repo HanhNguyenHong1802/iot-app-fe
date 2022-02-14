@@ -14,32 +14,38 @@ export const TYPES = {
   LOADED: 'LOADED',
 };
 
-export function loginSuccess (response) {
-  return{
+export function loginSuccess(response) {
+  return {
     type: TYPES.LOGIN_SUCCESS, response: response
   }
 };
 
-export function signupSuccess (response) {
-  return{
+export function signupSuccess(response) {
+  return {
     type: TYPES.REGISTER_SUCCESS, response: response
   }
 };
 
-export const logoutSuccess = (params) =>{
+export const logoutSuccess = (params) => {
   type: TYPES.LOGOUT_SUCCESS
 };
 
-export function login (params) {
-  return{
+export function login(params) {
+  return {
     type: TYPES.LOGIN_REQUEST,
     payload: params
   }
 }
 
-export function signup (params) {
-  return{
+export function signup(params) {
+  return {
     type: TYPES.REGISTER_REQUEST,
     payload: params
+  }
+}
+
+export function logout() {
+  return {
+    type: TYPES.LOGOUT_REQUEST
   }
 }

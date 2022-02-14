@@ -72,6 +72,7 @@ const Login = ({ navigation }) => {
     dispatch(signup(params))
   }
   const user = useSelector(state => state.auth)
+  console.log('user', user)
   useEffect(() => {
     if (user.user && user.token) {
       navigate.navigate('Devices')
@@ -81,98 +82,6 @@ const Login = ({ navigation }) => {
   }, [user])
 
 
-
-  // return (
-  //   <View style={styles.container}>
-  //     <Background />
-
-  //     <View
-  //       style={{
-  //         justifyContent: 'center',
-  //         alignItems: 'center',
-  //         height: 100,
-  //       }}
-  //     >
-  //       <Text style={{ fontWeight: 'bold', fontSize: 18 }}>
-  //         Welcome to SmartIoTApp
-  //       </Text>
-  //     </View>
-  //     <PanGestureHandler {...onBackArrowGestureHandler}>
-  //       <Animated.View
-  //         style={{
-  //           position: 'absolute',
-  //           top: 40,
-  //           left: 40,
-  //           opacity: arrowOpacityAnimation,
-  //         }}
-  //       >
-  //         <FontAwesome name="arrow-left" size={20} color="black" />
-  //       </Animated.View>
-  //     </PanGestureHandler>
-  //     <Animated.View
-  //       style={{
-  //         width: '100%',
-  //         alignItems: 'center',
-  //         height: 250,
-  //         paddingHorizontal: 25,
-  //         transform: [{ scale: scaleAnimation }, { translateY: 40 }],
-  //       }}
-  //     >
-  //       <Image
-  //         source={require('../../../assets/pngwing.com.png')}
-  //         style={{ width: 150, height: 150 }}
-  //       />
-  //     </Animated.View>
-
-  //     <View style={{ width, alignItems: 'center' }}>
-  //       <InputContainer arrowOpacityAnimation={arrowOpacityAnimation} cbUsername={setUsername} cbPass={setPassword} />
-
-  //       {!signupOpen &&
-  //         <TouchableOpacity
-  //           onPress={handleLogin}
-  //           style={{
-  //             borderRadius: 40,
-  //             width: '100%',
-  //             backgroundColor: '#6070FF',
-  //             color: '#fff',
-  //             marginTop: '200px'
-  //           }}>
-  //           <Text style={{ color: '#fff', width: 220, height: 50, textAlign: 'center', paddingTop: 14 }}>LOGIN</Text>
-  //         </TouchableOpacity>}
-  //       <LogoContainer arrowOpacityAnimation={arrowOpacityAnimation} />
-  //     </View>
-
-  //     <Animated.View
-  //       style={{
-  //         flexDirection: 'row',
-  //         alignItems: 'flex-end',
-  //         height: 150,
-  //         opacity: accountOpacity,
-  //       }}
-  //     >
-  //       <Text style={{ fontSize: 16 }}>Don't have an account? </Text>
-  //       <Text style={{ color: '#6070FF', fontWeight: 'bold', fontSize: 17 }} onPress={() => setSignUpOpen(true)}>Signup</Text>
-  //       {/* <PanGestureHandler {...onSignUpGestureHandler}>
-  //         <Animated.Text
-  //           style={{ color: '#6070FF', fontWeight: 'bold', fontSize: 17 }}
-  //         >
-  //           Signup
-  //         </Animated.Text>
-  //       </PanGestureHandler> */}
-  //       {signupOpen &&
-  //         <TouchableOpacity
-  //           onPress={handleSignup}
-  //           style={{
-  //             borderRadius: 40,
-  //             width: '100%',
-  //             backgroundColor: '#6070FF',
-  //             color: '#fff'
-  //           }}>
-  //           <Text style={{ color: '#fff', width: 220, height: 50, textAlign: 'center', paddingTop: 14 }}>SIGNUP</Text>
-  //         </TouchableOpacity>}
-  //     </Animated.View>
-  //   </View>
-  // );
   return <View style={styles.container}>
     <Background />
     <View
