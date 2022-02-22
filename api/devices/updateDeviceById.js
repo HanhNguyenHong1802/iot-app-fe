@@ -1,18 +1,18 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { REACT_APP_BACK_END } from '../../constant';
 
-let currentCookie = null 
+let currentCookie = null
 
 
 async function getCookieUser(name = '@currentuser') {
   currentCookie = await AsyncStorage.getItem(name)
 }
 
-export default async function updateDeviceByIdFetch(deviceId, params = {}) {
+export default async function updateDeviceByIdFetch(params = {}) {
   await getCookieUser()
   if (currentCookie !== null) {
     try {
-      const url = `${REACT_APP_BACK_END}/devices/${deviceId}`
+      const url = `${REACT_APP_BACK_END}/devices/${params.id}`
       await fetch(url, {
         method: 'PUT',
         cache: 'no-cache',
@@ -21,7 +21,7 @@ export default async function updateDeviceByIdFetch(deviceId, params = {}) {
           'Authorization': 'Bearer ' + currentCookie,
           'Accept': 'application/json',
         },
-        body: JSON.stringify(params)
+        body: JSON.stringify(params.body)
       },
       ).then(data => { return data?.data || [] })
         .catch(err => console.log(`err`, err))

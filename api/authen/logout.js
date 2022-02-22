@@ -2,7 +2,7 @@ import { REACT_APP_BACK_END } from "../../constant"
 import { postAsyncWithToken } from "../config"
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-let current 
+let current
 
 async function getCookieUser(name = '@currentuser') {
   current = await AsyncStorage.getItem('@currentuser')
@@ -10,9 +10,8 @@ async function getCookieUser(name = '@currentuser') {
 
 export async function logoutUser() {
   try {
-    
+
     await getCookieUser()
-    console.log('first')
     if (current !== null) {
 
       const url = `${REACT_APP_BACK_END}/users/logout`
@@ -25,7 +24,7 @@ export async function logoutUser() {
           'Accept': 'application/json',
         }
       },
-      ).then(data => { console.log('data', data?.statusText); return data?.statusText || '' })
+      ).then(data => { return data?.statusText || '' })
         .catch(err => console.log(`err`, err))
 
 

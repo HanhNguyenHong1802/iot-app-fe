@@ -28,7 +28,9 @@ export default async function addDeviceByIdFetch(params = {}) {
         },
         body: JSON.stringify(params)
       },
-      ).then(data => { return data?.data || [] })
+      ).then(data => {
+         return data?.data || [] 
+        })
         .catch(err => console.log(`err`, err))
     } catch (error) {
 

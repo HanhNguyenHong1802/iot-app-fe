@@ -72,7 +72,6 @@ const Login = ({ navigation }) => {
     dispatch(signup(params))
   }
   const user = useSelector(state => state.auth)
-  console.log('user', user)
   useEffect(() => {
     if (user.user && user.token) {
       navigate.navigate('Devices')
@@ -108,9 +107,23 @@ const Login = ({ navigation }) => {
             width: '100%',
             backgroundColor: '#6070FF',
             color: '#fff',
-            marginTop: 20
+            marginTop: 20,
+            marginBottom: 20
           }}>
           <Text style={{ color: '#fff', width: 220, height: 50, textAlign: 'center', paddingTop: 14 }}>{!signupOpen ? 'LOGIN' : 'SIGNUP'}</Text>
+        </TouchableOpacity>
+        <Text>----------------------Or-------------------</Text>
+        <TouchableOpacity
+          onPress={handleLogin}
+          style={{
+            borderRadius: 40,
+            width: '100%',
+            backgroundColor: '#6070FF',
+            color: '#fff',
+            marginTop: 20,
+            marginBottom: 20
+          }}>
+          <Text style={{ color: '#fff', width: 220, height: 50, textAlign: 'center', paddingTop: 14 }}>SIGNUP</Text>
         </TouchableOpacity>
       </View>
     </View>

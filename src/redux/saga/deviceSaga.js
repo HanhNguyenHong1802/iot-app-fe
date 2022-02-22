@@ -1,9 +1,12 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import getUserDevices from '../../../api/devices/getUserDevices';
+import addDeviceByIdFetch from '../../../api/devices/addDeviceById';
+import deleteDeviceById from '../../../api/devices/deleteDeviceById';
 import getDeviceById from '../../../api/devices/getDeviceById';
-import { getDetailSuccess, getListSuccess, TYPES } from '../actions/deviceAction';
+import getUserDevices from '../../../api/devices/getUserDevices';
+import updateDeviceByIdFetch from '../../../api/devices/updateDeviceById';
+import { addDeviceSuccess, deleteDeviceSuccess, getDetailSuccess, getList, getListSuccess, TYPES, updateDeviceSuccess } from '../actions/deviceAction';
 
-function* getListSaga(action) {
+function* getListSaga() {
   try {
     const response = yield call(getUserDevices)
     if (response) {
@@ -25,7 +28,43 @@ function* getDetailSaga(action) {
   }
 }
 
+function* addDeviceSaga(action) {
+  try {
+    const response = yield call(addDeviceByIdFetch(action.payload))
+    if (response) {
+      // yield put(addDeviceSuccess(response))
+      yield put({type: TYPES.LIST_DEVICE_REQUEST})
+    }
+  } catch (error) {
+
+  }
+}
+
+function* deleteDeviceSaga(action) {
+  try {
+    const response = yield call(deleteDeviceById(action.payload))
+    if (response) {
+      yield put(getList)
+    }
+  } catch (error) {
+
+  }
+}
+
+function* updateDeviceSaga(action) {
+  try {
+    const response = yield call(updateDeviceByIdFetch(action.payload))
+    if (response) {
+      yield put(updateDeviceSuccess(response))
+    }
+  } catch (error) {
+
+  }
+}
 export default [
   takeLatest(TYPES.LIST_DEVICE_REQUEST, getListSaga),
   takeLatest(TYPES.DETAIL_DEVICE_REQUEST, getDetailSaga),
+  takeLatest(TYPES.ADD_DEVICE_REQUEST, addDeviceSaga),
+  takeLatest(TYPES.DELETE_DEVICE_REQUEST, deleteDeviceSaga),
+  takeLatest(TYPES.UPDATE_DEVICE_REQUEST, updateDeviceSaga)
 ];

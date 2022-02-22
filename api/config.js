@@ -93,7 +93,7 @@ export async function getAsyncWithToken(url, param) {
 }
 
 export async function postAsyncWithToken(url, param) {
-  getCookieUser()
+  await getCookieUser()
 
   try {
     if (current !== null) {
@@ -102,9 +102,12 @@ export async function postAsyncWithToken(url, param) {
           'Authorization': `Bearer ${current}`,
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'Cache-Control': 'no-cache'}}
-        ,{
-        params: param}
+          'Cache-Control': 'no-cache'
+        }
+      }
+        , {
+          params: param
+        }
       )
 
       return response;
@@ -117,18 +120,21 @@ export async function postAsyncWithToken(url, param) {
 }
 
 export async function deleteAsyncWithToken(url, param) {
+  await getCookieUser()
   try {
-    const response = await Axios.delete(url, {
-      headers: {
-        'Authorization': 'Bearer ' + current && current,
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Cache-Control': 'no-cache'
-      },
-      params: param
-    })
+    if (current !== null) {
+      const response = await Axios.delete(url, {
+        headers: {
+          'Authorization': 'Bearer ' + current,
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Cache-Control': 'no-cache'
+        },
+        params: param
+      })
 
-    return response;
+      return response;
+    }
   } catch (ex) {
     const { status = 400, data = {} } = ex?.response || {};
     const error = data?.errors || [];
