@@ -101,6 +101,7 @@ export default function CardDetail({ route, item }) {
         <View>
           <Text>Co2</Text>
           <BarChart
+            verticalLabelRotation={60}
             data={{
               labels: arrLabel,
               datasets: [
@@ -110,7 +111,7 @@ export default function CardDetail({ route, item }) {
               ],
             }}
             width={Dimensions.get('window').width - 16}
-            height={220}
+            height={520}
             chartConfig={{
               backgroundColor: '#1cc910',
               backgroundGradientFrom: '#eff3ff',
@@ -129,6 +130,7 @@ export default function CardDetail({ route, item }) {
 
           <Text>Dust</Text>
           <BarChart
+            verticalLabelRotation={60}
             data={{
               labels: arrLabel,
               datasets: [
@@ -138,7 +140,7 @@ export default function CardDetail({ route, item }) {
               ],
             }}
             width={Dimensions.get('window').width - 16}
-            height={220}
+            height={520}
             chartConfig={{
               backgroundColor: '#1cc910',
               backgroundGradientFrom: '#eff3ff',
@@ -157,6 +159,7 @@ export default function CardDetail({ route, item }) {
 
           <Text>Humidity</Text>
           <BarChart
+            verticalLabelRotation={60}
             data={{
               labels: arrLabel,
               datasets: [
@@ -166,7 +169,7 @@ export default function CardDetail({ route, item }) {
               ],
             }}
             width={Dimensions.get('window').width - 16}
-            height={220}
+            height={520}
             chartConfig={{
               backgroundColor: '#1cc910',
               backgroundGradientFrom: '#eff3ff',
@@ -185,6 +188,7 @@ export default function CardDetail({ route, item }) {
 
           <Text>Temperature</Text>
           <BarChart
+            verticalLabelRotation={60}
             data={{
               labels: arrLabel,
               datasets: [
@@ -194,7 +198,7 @@ export default function CardDetail({ route, item }) {
               ],
             }}
             width={Dimensions.get('window').width - 16}
-            height={220}
+            height={520}
 
             chartConfig={{
               horizontalLabelRotation: 110,
