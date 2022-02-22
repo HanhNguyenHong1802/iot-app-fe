@@ -31,7 +31,7 @@ const InputContainer = ({ arrowOpacityAnimation, cbUsername, cbPass }) => {
         <Feather name="user" color="black" size={25} />
         <TextInput
           placeholder="Username"
-          style={{ marginLeft: 5, paddingRight:20 }}
+          style={{ marginLeft: 5, paddingRight: 20 }}
           onChangeText={(e) => cbUsername(e)} />
       </View>
 
@@ -49,8 +49,9 @@ const InputContainer = ({ arrowOpacityAnimation, cbUsername, cbPass }) => {
         <View style={{ flexDirection: 'row' }}>
           <Feather name="lock" color="black" size={25} />
           <TextInput
+            secureTextEntry={true}
             placeholder="Password"
-            style={{ marginLeft: 5, paddingRight:100 }}
+            style={{ marginLeft: 5, paddingRight: 100 }}
             textContentType='password'
             onChangeText={(e) => cbPass(e)}
 

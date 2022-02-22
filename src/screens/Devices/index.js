@@ -29,7 +29,6 @@ const Devices = () => {
   };
   useEffect(() => {
     dispatch(getList())
-
   }, [])
   const wait = (timeout) => {
     return new Promise(resolve => setTimeout(resolve, timeout));
@@ -90,9 +89,9 @@ const Devices = () => {
       key={item => { item.item?._id }}
       style={{ marginBottom: 100 }}
     />
-    <TouchableOpacity onPress={goTop} style={{ padding: 20, backgroundColor: 'red', position:'absolute' }}>
+    {/* <TouchableOpacity onPress={goTop} style={{ padding: 20, backgroundColor: 'red', position: 'absolute' }}>
       <Text>Go Top</Text>
-    </TouchableOpacity>
+    </TouchableOpacity> */}
     <View>
       <Modal isVisible={isModalVisible}>
         <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
